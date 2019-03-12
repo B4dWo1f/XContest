@@ -5,7 +5,7 @@ The idea is to analyze personal advances and possibly in the near future connect
 
 ## Requirements
 python 3.6+  (some fstrings are used)  
-[python-tqdm](https://github.com/tqdm/tqdm)
+[python-tqdm](https://github.com/tqdm/tqdm)  
 [python-selenium](https://selenium-python.readthedocs.io/)  
 [geckodriver](https://github.com/mozilla/geckodriver/releases/)
 

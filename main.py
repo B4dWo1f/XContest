@@ -27,7 +27,7 @@ url_base = url_root + '/world/en/'
 
 users = open('pilots.txt','r').read().strip().splitlines()
 
-H = False
+H = False   # hide?
 for pilot_name in users:
    LG.info('Doing pilot: %s'%(pilot_name))
    # Setup pilot-dependent variables
@@ -43,6 +43,8 @@ for pilot_name in users:
    # Get the links to all registered years
    all_years = XC.get_options_from_drop_menu(firefox,'xpath',"//select")
    LG.debug('%s years registered'%(len(all_years)))
+
+   # Loop over all years
    for year in all_years:
       year_n = int(year.get_attribute("text").split()[-1])
       url_year = url_root + year.get_attribute("value")
