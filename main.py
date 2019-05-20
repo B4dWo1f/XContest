@@ -55,7 +55,7 @@ for pilot_name in users:
       aux.get(url_year)
 
       # Get the links to all registered tracks
-      links = XC.get_flights_links(aux,'detail','flight detail')
+      links = XC.get_pilot_flights(aux,'detail','flight detail')
       LG.debug('%s tracks registered for year %s'%(len(links),year_n))
       for flight_link in tqdm(links):
          # Create an auxiliary browser to analyze each track
@@ -63,10 +63,11 @@ for pilot_name in users:
          aux1.get(flight_link)
 
          # Analyze track
-         start,airtime,dist = XC.analyze_track(aux1)
+         #start,airtime,dist = XC.xcontest_fligt(aux1)
+         start,airtime,dist,max_climb,max_sink,max_alt,points = XC.xcontest_fligt(aux1,dw=False)
 
          # Write flight info
-         f_data.write(start.strftime('%d/%m/%Y %H:%M,')+f'{airtime},{dist}\n')
+         f_data.write(start.strftime('%d/%m/%Y %H:%M,')+f'{airtime},{dist},{max_climb},{max_sink},{max_alt},{points}\n')
          f_data.flush()
          aux1.close()
       aux.close()
